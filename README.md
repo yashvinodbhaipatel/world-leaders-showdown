@@ -15,6 +15,23 @@ A free, original, lighthearted **2D cartoon fighting game** featuring satirical 
 - Emmanuel Macron 🇫🇷
 - Xi Jinping 🇨🇳
 
+## Super edition (0.3)
+
+Fighters now use stronger directional shading, cloth highlights and layered energy effects for a 2.5D look. Each leader has a unique animated super pose and effect:
+
+| Fighter | Super |
+|---|---|
+| Trump | Tariff Storm |
+| Modi | Sudarshan Chakra |
+| Putin | Frost Wave |
+| Meloni | Roman Shield |
+| Macron | Spotlight Burst |
+| Xi | Dragon Spiral |
+
+Supers require 100 energy and deal the same 29 base damage (reduced by blocking), with a shared 420-unit range. These are fictional fantasy abilities for balanced parody gameplay.
+
+Choose **TRY SUPER POWERS · PRACTICE** for a stationary CPU, unlimited time and an automatically refilling super meter. Press **L** or **Space**, or tap **SUPER** on mobile. Exit returns to normal match setup.
+
 ## Arcade edition (0.2)\n\nA new illustrated roster, live versus preview, immersive arena layout, full-screen button, landscape phone controls, animated fighting stances, attack trails, hit-stop, combo feedback and short attack buffering. The original six leaders, three arenas and politically neutral parody remain.\n\n## Features
 
 - Six original illustrated caricatures with animated procedural bodies

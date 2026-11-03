@@ -5,7 +5,7 @@ const source = fs.readFileSync(require('node:path').join(__dirname,'index.html')
 const context2d = new Proxy({}, { get:(_,key)=>(key==='createLinearGradient'||key==='createRadialGradient')?()=>({addColorStop(){}}):()=>{} });
 const elements=new Map();
 function element(){return {style:{},dataset:{},classList:{add(){},remove(){},toggle(){}},setAttribute(){},appendChild(){},addEventListener(){},focus(){},getContext:()=>context2d,querySelector:()=>element()}}
-const sandbox={Image:class {complete=false},console,performance:{now:()=>0},requestAnimationFrame:()=>1,cancelAnimationFrame(){},window:{addEventListener(){}},document:{body:element(),getElementById:id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id)},createElement:element,querySelectorAll:()=>[],addEventListener(){}},assert};
+const sandbox={context2d,Image:class {complete=false},console,performance:{now:()=>0},requestAnimationFrame:()=>1,cancelAnimationFrame(){},window:{addEventListener(){}},document:{body:element(),getElementById:id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id)},createElement:element,querySelectorAll:()=>[],addEventListener(){}},assert};
 vm.createContext(sandbox);vm.runInContext(source,sandbox);
 vm.runInContext(`
 muted=true;start();
@@ -24,6 +24,8 @@ for(let stage=0;stage<3;stage++){stageIndex=stage;start();draw();}
 for(let level=0;level<3;level++){difficulty=level;start();game.start=0;game.e.x=game.p.x+110;for(let n=0;n<1200&&game.p.hp>0;n++)updateF(game.e,game.p,1/60,true);assert.ok(game.p.hp<100,'CPU attacks on each difficulty')}
 start();game.start=0;game.p.cool=.1;attack(game.p,game.e,'kick');assert.equal(game.p.buffer.type,'kick');updateF(game.p,game.e,.11,false);assert.equal(game.p.action,'kick');assert.equal(game.p.buffer,null);
 start();game.start=0;game.p.x=400;game.e.x=500;attack(game.p,game.e,'punch');hit(game.p,game.e);game.p.cool=0;game.t=.5;attack(game.p,game.e,'kick');hit(game.p,game.e);assert.equal(game.p.combo,2);assert.equal(game.comboLabel,'2 HIT COMBO');assert.ok(game.hitStop>0);
+for(let i=0;i<6;i++){playerIndex=i;start();game.start=0;game.p.x=400;game.e.x=730;game.p.energy=100;attack(game.p,game.e,'super');assert.equal(game.superTitle,POWERS[i].name);assert.equal(game.p.energy,0);for(const phase of [.15,.5,.85]){game.p.actionTime=1.8*(1-phase);drawSuper(context2d,game.p,phase);drawPerson(context2d,i,400,590,1,1,'super',phase,0,phase)}hit(game.p,game.e);assert.equal(game.e.hp,71);hit(game.p,game.e);assert.equal(game.e.hp,71)}
+start();game.practice=true;game.start=0;game.p.energy=0;updateF(game.p,game.e,.1,false);assert.equal(game.p.energy,100);let cpuX=game.e.x;updateF(game.e,game.p,1,true);assert.equal(game.e.x,cpuX);
 quit();assert.equal(game,null);
 `,sandbox);
-console.log('PASS: countdown, damage, single-hit, block/grab, super meter, collisions, input/pause, knockout/rematch, all fighters, all arenas, CPU difficulties, attack buffer, combos and hit-stop');
+console.log('PASS: countdown, damage, single-hit, block/grab, super meter, collisions, input/pause, knockout/rematch, all fighters, all arenas, CPU difficulties, attack buffer, combos, hit-stop, all six supers and practice');
