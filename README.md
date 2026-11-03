@@ -4,7 +4,7 @@ A free, original, lighthearted **2D cartoon fighting game** featuring satirical 
 
 ## Play
 
-Open the published GitHub Pages site (after Pages is enabled), or simply open `index.html` in a browser.
+[Play World Leaders Showdown](https://yashvinodbhaipatel.github.io/world-leaders-showdown/), or open `index.html` in a browser.
 
 ## Characters
 
@@ -38,7 +38,7 @@ Open the published GitHub Pages site (after Pages is enabled), or simply open `i
 | Super | L or Space | SUPER (requires full blue energy bar) |
 | Pause | Esc | PAUSE |
 
-Select a portrait to choose your fighter. Shift-click or right-click a portrait to change the CPU opponent.
+Choose **CHOOSE YOUR FIGHTER** or **CHOOSE CPU**, then select a portrait. Shift-click and right-click remain available for CPU selection. Hold away from the opponent to block; grabs bypass blocking. Super requires a full blue meter.
 
 ## Deployment
 
@@ -53,7 +53,7 @@ No GitHub Actions or build configuration is required.
 
 ## Release
 
-Suggested first release tag: `v0.1.0` — initial playable prototype. Create from the GitHub Releases UI after verifying gameplay. This repository currently contains an initial implementation; gameplay testing on all devices is still recommended.
+`v0.1.0` — initial playable release. Original procedural artwork, non-graphic combat and equal character stats.\n\n## Validation\n\nRun `node test.cjs` (Node.js 18+) for gameplay regression checks: countdown, hit damage, single-hit attacks, block/grab, super meter, collisions, movement/pause, knockout/rematch, roster, stages and CPU difficulties. No packages are required.\n\nBrowser checks covered desktop canvas rendering, keyboard and pointer controls, CPU selection, pause, and a 390px mobile layout. These checks do not substitute for testing every physical phone or browser.
 
 ## Disclaimer
 
